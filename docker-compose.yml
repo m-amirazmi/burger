@@ -1,0 +1,59 @@
+version: "3.7"
+
+services:
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    image: burger-server
+    container_name: burger-server
+    # command: /burger-server/node_modules/.bin/nodemon src/index.js
+    volumes:
+      - ./server/:/burger-server
+      - /burger-server/node_modules
+    ports:
+      - "5050:5050"
+    depends_on:
+      - burger-db
+    env_file: ./server/.env
+    environment:
+      - NODE_ENV=development
+    networks:
+      - burger-network
+
+  burger-db:
+    image: mongo
+    container_name: burger-db
+    volumes:
+      - data-volume:/data/db
+    ports:
+      - "27017:27017"
+    networks:
+      - burger-network
+
+  client-admin:
+    build:
+      context: ./c-admin
+      dockerfile: Dockerfile
+    image: burger-client-admin
+    container_name: burger-client-admin
+    command: npm run dev
+    volumes:
+      - ./c-admin/:/burger-client-admin
+      - /burger-client-admin/node_modules
+    depends_on:
+      - server
+    ports:
+      - "5100:5100"
+    networks:
+      - burger-network
+
+networks:
+  burger-network:
+    driver: bridge
+
+volumes:
+  data-volume:
+  node_modules:
+  web-root:
+    driver: local
