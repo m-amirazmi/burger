@@ -5,13 +5,13 @@ import { FaPen, FaTrash } from "react-icons/fa6";
 
 export default function BurgerItem({
   no = 0,
-  id,
+  _id,
   name,
   description,
   noOfStallUsed,
 }: IBurgerItem) {
   return (
-    <Tr>
+    <Tr key={_id}>
       <Td>{no + 1}</Td>
       <Td textTransform="capitalize">{name}</Td>
       <Td>{description}</Td>

@@ -17,7 +17,7 @@ export default function BurgerList({ list }: IBurgerList) {
         </Thead>
         <Tbody>
           {list.map((i, k) => (
-            <BurgerItem key={i.id} no={k} {...i} />
+            <BurgerItem key={i._id} no={k} {...i} />
           ))}
         </Tbody>
       </Table>

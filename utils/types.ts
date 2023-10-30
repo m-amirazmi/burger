@@ -32,7 +32,7 @@ export interface IPageTitle {
 
 export interface IBurgerItem {
   no?: number;
-  id: string;
+  _id: string;
   name: string;
   description: string;
   noOfStallUsed: number;
