@@ -13,6 +13,21 @@ export const createBurger = async (req, res, next) => {
   }
 };
 
+export const updateBurger = async (req, res, next) => {
+  const { id } = req.params;
+
+  try {
+    const burger = Burger.findByIdAndUpdate(id, req.body);
+    await burger.save();
+    return res
+      .status(204)
+      .json({ message: `Burger ${burger.name} updated.`, value: burger });
+  } catch (error) {
+    error.object = "Burger";
+    next(error);
+  }
+};
+
 export const getAllBurger = async (req, res) => {
   const burgers = await Burger.find({});
   return res.status(200).json({ message: "All burgers.", value: burgers });
