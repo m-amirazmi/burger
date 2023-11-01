@@ -1,4 +1,5 @@
 import { model, Schema } from "mongoose";
+import { toSlug } from "../utils/helpers.js";
 
 const burgerSchema = new Schema(
   {
@@ -17,6 +18,10 @@ const burgerSchema = new Schema(
       enum: ["active", "inactive"],
       default: "inactive",
     },
+    slug: {
+      type: String,
+      lowercase: true,
+    },
     keywords: [
       {
         type: String,
@@ -30,5 +35,10 @@ const burgerSchema = new Schema(
   },
   { timestamps: { createdAt: "created_at", updatedAt: "updated_at" } }
 );
+
+burgerSchema.pre("save", function (next) {
+  this.slug = toSlug(this.name);
+  next();
+});
 
 export default model("Burger", burgerSchema);

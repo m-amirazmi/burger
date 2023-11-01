@@ -4,6 +4,7 @@ import env from "./utils/env.js";
 import cors from "cors";
 import routesBurger from "./routes/burger.route.js";
 import { db } from "./utils/db.js";
+import { handleError } from "./controllers/error.controller.js";
 
 const app = express();
 
@@ -13,9 +14,7 @@ app.use(cors());
 
 app.use("/api/burgers", routesBurger);
 
-app.get("/api", (req, res) => {
-  return res.send("This is Backend API");
-});
+app.use(handleError);
 
 db.on("connected", () => {
   console.log("Database is connected successfully");
