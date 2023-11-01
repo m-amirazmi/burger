@@ -31,4 +31,4 @@ const burgerSchema = new Schema(
   { timestamps: { createdAt: "created_at", updatedAt: "updated_at" } }
 );
 
-module.exports = model("Burger", burgerSchema);
+export default model("Burger", burgerSchema);
