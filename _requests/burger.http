@@ -1,0 +1,32 @@
+GET http://localhost:5050/api/burgers
+
+###
+
+GET http://localhost:5050/api/burgers/654319815ebc89e08f802ad5
+
+###
+
+POST http://localhost:5050/api/burgers HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "daging",
+  "description": "Burger ayam sedap dengan sekeping daging ayam.",
+  "keywords": ["ayam", "chicken", "chick"]
+}
+
+###
+
+PUT http://localhost:5050/api/burgers/654312f31840cca45b073286 HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "daging sedap",
+  "keywords": ["daging", "meat", "sedap?"]
+}
+
+###
+
+DELETE http://localhost:5050/api/burgers/65430a791e23e7f7b2f8d816 HTTP/1.1
+Content-Type: application/json
+

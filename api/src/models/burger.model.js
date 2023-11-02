@@ -8,6 +8,7 @@ const burgerSchema = new Schema(
       lowercase: true,
       unique: true,
       required: true,
+      immutable: true,
     },
     description: {
       type: String,

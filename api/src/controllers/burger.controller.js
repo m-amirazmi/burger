@@ -1,5 +1,32 @@
 import Burger from "../models/burger.model.js";
 
+export const getAllBurger = async (req, res, next) => {
+  try {
+    const burgers = await Burger.find({});
+    const message = burgers.length > 0 ? "All burgers" : "No burger.";
+    return res.status(200).json({ message, value: burgers });
+  } catch (error) {
+    error.object = "Burger";
+    next(error);
+  }
+};
+
+export const getBurger = async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    const burger = await Burger.findById(id);
+    return res
+      .status(200)
+      .json({
+        message: `Burger ${burger.name} has been found.`,
+        value: burger,
+      });
+  } catch (error) {
+    error.object = "Burger";
+    next(error);
+  }
+};
+
 export const createBurger = async (req, res, next) => {
   try {
     const burger = new Burger(req.body);
@@ -17,18 +44,33 @@ export const updateBurger = async (req, res, next) => {
   const { id } = req.params;
 
   try {
-    const burger = Burger.findByIdAndUpdate(id, req.body);
-    await burger.save();
-    return res
-      .status(204)
-      .json({ message: `Burger ${burger.name} updated.`, value: burger });
+    const burger = await Burger.findById(id);
+    Object.assign(burger, req.body);
+    const updatedBurger = await burger.save();
+
+    return res.status(201).json({
+      message: `Burger ${burger.name} is updated.`,
+      value: updatedBurger,
+    });
   } catch (error) {
     error.object = "Burger";
     next(error);
   }
 };
 
-export const getAllBurger = async (req, res) => {
-  const burgers = await Burger.find({});
-  return res.status(200).json({ message: "All burgers.", value: burgers });
+export const removeBurger = async (req, res, next) => {
+  const { id } = req.params;
+
+  console.log("removeburger", id);
+
+  try {
+    const burger = await Burger.findByIdAndDelete(id);
+    return res.json({
+      message: `Removed burger ${burger.name}`,
+      value: burger,
+    });
+  } catch (error) {
+    error.object = "Burger";
+    next(error);
+  }
 };
