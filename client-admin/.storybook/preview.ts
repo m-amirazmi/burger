@@ -1,7 +1,9 @@
 import type { Preview } from "@storybook/react";
+import { theme } from "../src/utils/theme";
 
 const preview: Preview = {
   parameters: {
+    chakra: { theme },
     actions: { argTypesRegex: "^on[A-Z].*" },
     controls: {
       matchers: {
