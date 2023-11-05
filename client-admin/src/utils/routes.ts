@@ -9,21 +9,25 @@ export const routes: IRoute[] = [
     path: "",
     name: "Dashboard",
     element: DashboardPage,
+    showOnSidebar: true,
   },
   {
     path: "burgers",
     name: "Burgers",
     element: BurgersPage,
+    showOnSidebar: true,
     subpages: [
       {
         path: "",
-        name: "Burgers",
+        name: "Burger List",
         element: BurgersPage,
+        showOnSidebar: true,
       },
       {
         path: "create",
-        name: "Create Burgers",
+        name: "Create Burger",
         element: BurgersCreatePage,
+        showOnSidebar: true,
       },
     ],
   },
@@ -31,5 +35,6 @@ export const routes: IRoute[] = [
     path: "users",
     name: "Users",
     element: UsersPage,
+    showOnSidebar: true,
   },
 ];
