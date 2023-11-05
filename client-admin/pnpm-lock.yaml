@@ -17,6 +17,9 @@ dependencies:
   '@fontsource-variable/inter':
     specifier: ^5.0.15
     version: 5.0.15
+  '@fontsource-variable/jost':
+    specifier: ^5.0.16
+    version: 5.0.16
   framer-motion:
     specifier: ^10.16.4
     version: 10.16.4(react-dom@18.2.0)(react@18.2.0)
@@ -1735,6 +1738,10 @@ packages:
 
   /@fontsource-variable/inter@5.0.15:
     resolution: {integrity: sha512-CdQPQQgOVxg6ifmbrqYZeUqtQf7p2wPn6EvJ4M+vdNnsmYZgYwPPPQDNlIOU7LCUlSGaN26v6H0uA030WKn61g==}
+    dev: false
+
+  /@fontsource-variable/jost@5.0.16:
+    resolution: {integrity: sha512-/qwshKLL/um72oEHbue8wtu68n1N1XqtzTm9iz/70XrnXvBIBLWIm5ef2I2X2MRM6iwoQOX0EOBZOhjK2osXwg==}
     dev: false
 
   /@humanwhocodes/config-array@0.11.13:
