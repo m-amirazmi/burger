@@ -3,6 +3,7 @@ import { BurgersCreatePage } from "../pages/burgers/create";
 import { DashboardPage } from "../pages";
 import { UsersPage } from "../pages/users";
 import { IRoute } from "./types";
+import { FaHome, FaHamburger, FaUsers } from "react-icons/fa";
 
 export const routes: IRoute[] = [
   {
@@ -10,12 +11,14 @@ export const routes: IRoute[] = [
     name: "Dashboard",
     element: DashboardPage,
     showOnSidebar: true,
+    icon: FaHome,
   },
   {
     path: "burgers",
     name: "Burgers",
     element: BurgersPage,
     showOnSidebar: true,
+    icon: FaHamburger,
     subpages: [
       {
         path: "",
@@ -36,5 +39,6 @@ export const routes: IRoute[] = [
     name: "Users",
     element: UsersPage,
     showOnSidebar: true,
+    icon: FaUsers,
   },
 ];
