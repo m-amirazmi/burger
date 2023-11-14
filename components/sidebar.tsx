@@ -1,38 +1,37 @@
-"use client";
+import { cn } from "@/lib/utils";
+import SidebarLinks from "./sidebar-links";
 
-import { sidebarRoutes } from "@/lib/routes";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+interface IProps {
+  handleToggleMobileMenu: () => void;
+  toggleMobileMenu: boolean;
+}
 
-interface IProps {}
-
-const Sidebar: React.FC<IProps> = ({}) => {
-  const pathname = usePathname();
-
+const Sidebar: React.FC<IProps> = ({
+  toggleMobileMenu,
+  handleToggleMobileMenu,
+}) => {
   return (
-    <div className="flex-shrink-0 flex-grow-0 basis-[280px] h-100% border-r">
-      <div className="flex items-center px-6 h-16 border-b font-semibold">
-        BURGER ADMIN
+    <>
+      <div
+        className={cn(
+          "flex-shrink-0 flex-grow-0 basis-[280px] h-100% border-r md:block",
+          !toggleMobileMenu
+            ? "hidden"
+            : "block w-[280px] absolute z-10 bg-white h-screen"
+        )}
+      >
+        <div className="flex items-center px-6 h-16 border-b font-semibold">
+          BURGER ADMIN
+        </div>
+        <SidebarLinks />
       </div>
-      <div className="flex flex-col">
-        {sidebarRoutes.map((i) => (
-          <Link
-            key={i.path}
-            href={i.path}
-            className={`py-4 px-6 flex items-center gap-2 transition-colors ${
-              pathname === i.path
-                ? "bg-amber-600/10 text-amber-600"
-                : "text-slate-500/80"
-            }`}
-          >
-            <span className="text-xl">
-              <i.icon />
-            </span>
-            <span>{i.name}</span>
-          </Link>
-        ))}
-      </div>
-    </div>
+      {toggleMobileMenu && (
+        <div
+          onClick={handleToggleMobileMenu}
+          className="bg-foreground/30 h-screen w-full absolute top-0 right-0"
+        ></div>
+      )}
+    </>
   );
 };
 

@@ -1,31 +1,30 @@
-import { FaHamburger, FaHome, FaUsers, FaCog } from "react-icons/fa";
-import { FaShop } from "react-icons/fa6";
+import { Beef, Home, SlidersHorizontal, Store, Users2 } from "lucide-react";
 const adminRoot = "/admin";
 
 export const sidebarRoutes = [
   {
     path: adminRoot + "",
     name: "Dashboard",
-    icon: FaHome,
+    icon: Home,
   },
   {
     path: adminRoot + "/burgers",
     name: "Burgers",
-    icon: FaHamburger,
+    icon: Beef,
   },
   {
     path: adminRoot + "/stalls",
     name: "Stalls",
-    icon: FaShop,
+    icon: Store,
   },
   {
     path: adminRoot + "/users",
     name: "Users",
-    icon: FaUsers,
+    icon: Users2,
   },
   {
     path: adminRoot + "/settings",
     name: "Settings",
-    icon: FaCog,
+    icon: SlidersHorizontal,
   },
 ];
