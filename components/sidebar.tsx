@@ -23,7 +23,7 @@ const Sidebar: React.FC<IProps> = ({
         <div className="flex items-center px-6 h-16 border-b font-semibold">
           BURGER ADMIN
         </div>
-        <SidebarLinks />
+        <SidebarLinks onLinkClick={handleToggleMobileMenu} />
       </div>
       {toggleMobileMenu && (
         <div
